@@ -42,6 +42,25 @@ export const putDb = async (name, home_phone, cell_phone, email) => {
 };
 
 // TODO: Add logic for a method that gets all the content from the database
-export const getDb = async () => console.error("getDb not implemented");
+export const getDb = async () => {
+    console.log("GET from the database");
+
+    // Open the database.
+    const contactDb = await openDB("contact", 1);
+
+    // Open a transaction on the database.
+    const tx = contactDb.transaction("contact", "readonly");
+
+    // Open the object store.
+    const store = tx.objectStore("contact");
+
+    // Get all the data from the object store.
+    const request = store.getAll();
+
+    // Wait for the database to complete the transaction.
+    const result = await request;
+    console.log("result.value", result);
+    return result;
+};
 
 initdb();
