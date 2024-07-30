@@ -24,7 +24,7 @@ module.exports = () => {
                 short_name: "JATE",
                 description: "Keep track of what matters most",
                 background_color: "#ffffff",
-                crossorigin: "anonymous", //can be null, use-credentials or anonymous
+                crossorigin: "anonymous", // can be null, use-credentials or anonymous
                 icons: [
                     {
                         src: path.resolve("src/images/logo.png"),
@@ -32,6 +32,9 @@ module.exports = () => {
                         purpose: "maskable",
                     },
                 ],
+                inject: true,
+                fingerprints: false,
+                publicPath: "./", // Ensure correct path resolution
             }),
             new HtmlWebpackPlugin({
                 template: "./index.html",

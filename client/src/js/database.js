@@ -16,25 +16,20 @@ const initdb = async () =>
     });
 
 // TODO: Add logic to a method that accepts some content and adds it to the database
-export const putDb = async (name, home_phone, cell_phone, email) => {
+export const putDb = async (code) => {
     console.log("Post to the database");
 
     // Open the database.
-    const contactDb = await openDB("contact", 1);
+    const editorDb = await openDB("code", 1);
 
     // Open a transaction on the database.
-    const tx = contactDb.transaction("contact", "readwrite");
+    const tx = editorDb.transaction("editor", "readwrite");
 
     // Open the object store.
-    const store = tx.objectStore("contact");
+    const store = tx.objectStore("editor");
 
     // Add the data to the object store.
-    const request = store.add({
-        name,
-        home_phone,
-        cell_phone,
-        email,
-    });
+    const request = store.add({ code });
 
     // Wait for the database to complete the transaction.
     const result = await request;
@@ -46,13 +41,13 @@ export const getDb = async () => {
     console.log("GET from the database");
 
     // Open the database.
-    const contactDb = await openDB("contact", 1);
+    const editorDb = await openDB("code", 1);
 
     // Open a transaction on the database.
-    const tx = contactDb.transaction("contact", "readonly");
+    const tx = editorDb.transaction("editor", "readonly");
 
     // Open the object store.
-    const store = tx.objectStore("contact");
+    const store = tx.objectStore("editor");
 
     // Get all the data from the object store.
     const request = store.getAll();
