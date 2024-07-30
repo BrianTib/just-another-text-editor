@@ -1,0 +1,17 @@
+{
+  "icons": [
+    {
+      "src": "auto/icon_500x500.4db358a0c3f7ab4a52dc409ff45974da.png",
+      "sizes": "500x500",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "name": "JATE",
+  "short_name": "JATE",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": ".",
+  "description": "Keep track of what matters most",
+  "background_color": "#ffffff"
+}
