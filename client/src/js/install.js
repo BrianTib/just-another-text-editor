@@ -1,23 +1,20 @@
 const butInstall = document.getElementById("buttonInstall");
 
 if (butInstall) {
-    // Logic for installing the PWA
     // Event handler for `beforeinstallprompt` event
     window.addEventListener("beforeinstallprompt", (event) => {
         // Prevent the mini-infobar from appearing on mobile
         event.preventDefault();
-        // Store the event so it can be triggered later.
+        // Store the event so it can be triggered later
         window.deferredPrompt = event;
 
-        // Remove the hidden class from the button.
+        // Show the install button
         butInstall.classList.remove("hidden");
     });
 
     // Event handler for the `butInstall` element
     butInstall.addEventListener("click", async () => {
         const promptEvent = window.deferredPrompt;
-
-        console.log("promptEvent", promptEvent);
 
         if (!promptEvent) {
             return;
@@ -30,29 +27,28 @@ if (butInstall) {
         const { outcome } = await promptEvent.userChoice;
         console.log(`User response to the install prompt: ${outcome}`);
 
-        // Reset the deferred prompt variable, it can only be used once.
+        // Reset the deferred prompt variable
         window.deferredPrompt = null;
 
         // Hide the install button
         butInstall.classList.add("hidden");
     });
 
+    // Function to check if the app is running in standalone mode
     const isPWA = () =>
         !!(
             window.matchMedia?.("(display-mode: standalone)").matches ||
             window.navigator.standalone
         );
 
-    // if are standalone android OR safari
+    // Hide the install button if the app is already installed or running in standalone mode
     if (isPWA()) {
-        // hidden the button
         butInstall.classList.add("hidden");
     }
 
     // Event handler for the `appinstalled` event
-    window.addEventListener("appinstalled", (event) => {
+    window.addEventListener("appinstalled", () => {
         console.log("PWA was installed");
-        // Clear the deferredPrompt so it can be garbage collected
         window.deferredPrompt = null;
     });
 }
