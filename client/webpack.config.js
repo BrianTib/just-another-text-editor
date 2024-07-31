@@ -27,8 +27,8 @@ module.exports = () => {
                 crossorigin: "anonymous", // can be null, use-credentials or anonymous
                 icons: [
                     {
-                        src: path.resolve("src/images/logo.png"),
-                        sizes: [500], // multiple sizes
+                        src: path.resolve("src/images/icon_256x256.png"),
+                        sizes: [96, 256], // multiple sizes
                         purpose: "maskable",
                     },
                 ],
