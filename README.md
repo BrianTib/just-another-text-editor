@@ -22,5 +22,5 @@ For additional questions contact me through [GitHub](https://github.com/brianTib
 
 ## Links
 
-- [Github Repo]()
+- [Github Repo](https://github.com/BrianTib/just-another-text-editor)
 - [Render Deployment]()
