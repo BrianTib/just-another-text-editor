@@ -15,8 +15,9 @@ if (butInstall) {
 
     // Event handler for the `butInstall` element
     butInstall.addEventListener("click", async () => {
-        console.log("Install button clicked");
         const promptEvent = window.deferredPrompt;
+
+        console.log("promptEvent", promptEvent);
 
         if (!promptEvent) {
             return;
@@ -35,6 +36,18 @@ if (butInstall) {
         // Hide the install button
         butInstall.classList.add("hidden");
     });
+
+    const isPWA = () =>
+        !!(
+            window.matchMedia?.("(display-mode: standalone)").matches ||
+            window.navigator.standalone
+        );
+
+    // if are standalone android OR safari
+    if (isPWA()) {
+        // hidden the button
+        butInstall.classList.add("hidden");
+    }
 
     // Event handler for the `appinstalled` event
     window.addEventListener("appinstalled", (event) => {

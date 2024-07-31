@@ -22,8 +22,9 @@ module.exports = () => {
             new WebpackPwaManifest({
                 name: "JATE",
                 short_name: "JATE",
-                description: "Keep track of what matters most",
-                background_color: "#ffffff",
+                description: "Take notes with Javascript syntax highlighting!",
+                background_color: "#225ca3",
+                theme_color: "#225ca3",
                 crossorigin: "anonymous", // can be null, use-credentials or anonymous
                 icons: [
                     {
@@ -53,7 +54,7 @@ module.exports = () => {
                     use: [MiniCssExtractPlugin.loader, "css-loader"],
                 },
                 {
-                    test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                    test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
                     type: "asset/resource",
                 },
                 {

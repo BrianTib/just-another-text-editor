@@ -34,7 +34,7 @@ registerRoute(({ request }) => request.mode === "navigate", pageCache);
 registerRoute(
     // Cache CSS, JS, and other static assets with a StaleWhileRevalidate strategy
     ({ request }) =>
-        ["style", "script", "worker"].includes(request.destination),
+        ["style", "script", "worker", "document"].includes(request.destination),
     new StaleWhileRevalidate({
         cacheName: "asset-cache",
         plugins: [
@@ -47,5 +47,5 @@ registerRoute(
 
 // Optional: Implement offline fallback
 offlineFallback({
-    pageFallback: "/offline.html", // Path to an offline fallback page (create this file)
+    pageFallback: "/index.html", // Path to an offline fallback page (create this file)
 });
